@@ -1,0 +1,14 @@
+#logaMarca{
+    transform: rotateZ(10deg);
+    animation: turn .7s ease-out forwards .5s;
+  }
+  
+  @keyframes turn {
+    50% {
+      transform: rotateZ(-20deg);
+    }
+  }
+  .text-link{
+    text-decoration: none;
+    color: rgb(66, 197, 214);
+  }
