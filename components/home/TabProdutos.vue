@@ -1,27 +1,26 @@
 <template>
   <v-card main>
     <v-tabs color="deep-purple accent-4">
-        <v-tab>P. Digitais</v-tab>
         <v-tab>P. Fisicos</v-tab>
+        <v-tab>P. Digitais</v-tab>
 
-        <p class="mx-auto d-none d-md-block">Para facilitar a tua busca {{ $store.state.auth.user.userNome }} , tenta procura o produto por tipo!</p>
-
+        <p class="mx-auto d-none d-md-block">Para facilitar a tua busca {{ $store.state.auth.user.userNome }} , tenta procura o produto por categória!</p>
 
         <v-tab-item key="1">
 
             <v-container fluid>
-                <h2>Produtos Digitais</h2>
+                <h2>Produtos Fisicos</h2>
 
-                <Digitalproducts :products="products.digital"/>
+                <Fisicalproducts :products="products.fisico"/>
             </v-container>
         </v-tab-item>
 
         <v-tab-item key="2">
 
             <v-container fluid>
-                <h2>Produtos Fisicos</h2>
+                <h2>Produtos Digitais</h2>
 
-                <Fisicalproducts :products="products.fisico"/>
+                <Digitalproducts :products="products.digital"/>
             </v-container>
         </v-tab-item>
 
