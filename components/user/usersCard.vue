@@ -12,8 +12,8 @@
       <v-list-item three-line color="#ecf0f1" v-for="(user, i) in usuarios" :key="i" :to="baseLink + user._id" router exact>
         
         <v-list-item-avatar color="red">
-          <img :src="require(`@/mvpo_back_End/tmp/uploads/files/img/user/${user.foto}`)" 
-          id="fotoPerfil" alt="Foto do Usuário" v-if="user.foto">
+          <img :src="user.img_perfil_url" 
+          id="fotoPerfil" alt="Foto do Usuário" v-if="user.img_perfil_url">
 
           <v-icon v-else color="#FFF" large>mdi-account-circle</v-icon>
         </v-list-item-avatar>

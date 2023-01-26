@@ -138,9 +138,7 @@ export default {
         getImages(products) {
             products.forEach(product => {
                 try {
-                    api.get('/image/' + product.images[0]).then(res => {
-                        product.foto = res.data.url
-                    })
+                    product.foto = product.images_url[0]
                 } catch (error) {
 
                 }
@@ -151,20 +149,15 @@ export default {
             this.user = this.auth.user
             this.person = this.auth.person
 
-            this.authImages(this.user._id)
+            this.authImages(this.user)
         },
-
-        authImages(id) {
+        
+        authImages(user) {
             try {
-                const perfil = api.get('/userImg/perfil/' + id).then(res => {
-                    this.fotoPerfil = res.data.url
-                })
-
-                const capa = api.get('/userImg/capa/' + id).then(res => {
-                    this.fotoCapa = res.data.url
-                })
-
-            } catch (error) {
+                this.fotoPerfil = user.img_perfil_url
+                
+                this.fotoCapa = user.img_capa_url
+            }catch (error) {
                 console.log(error)
             }
         },

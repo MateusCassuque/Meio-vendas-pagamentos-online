@@ -85,13 +85,7 @@ export default {
 
         getImages(product) {
             try {
-                api.get('/image/' + product.images[0]).then(res => {
-                    this.product.foto = res.data.key
-                })
-
-                api.get('/userImg/perfil/' + this.product.user._id).then(res => {
-                    this.product.user.foto = res.data.key
-                })
+                this.product.foto = product.images_url[0]
 
             } catch (error) {
                 alert(error)

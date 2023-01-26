@@ -19,8 +19,8 @@
                 <v-spacer />
                 
                  <nuxt-link :to="userLink">
-                    <v-avatar v-if="fotoPerfil">
-                        <img :src="require(`@/mvpo_back_End/tmp/uploads/files/img/user/${fotoPerfil}`)" id="fotoPerfil" alt="Foto do Usuário">
+                    <v-avatar v-if="user.img_perfil_url">
+                        <img :src="user.img_perfil_url" id="fotoPerfil" alt="Foto do Usuário">
                     </v-avatar>
                         
                     <v-icon v-else x-large color="#FFF">mdi-account-circle</v-icon>
@@ -67,6 +67,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import logo from '@/static/img/icones/mvpo3.png'
 import { api } from '@/store/services.js'
 
@@ -96,24 +97,11 @@ export default {
         }    
     },
 
+    fetch(){
+        this.authUser()
+    },
+
     methods:{
-        getUser(){
-            this.user = this.$store.state.auth.user
-            
-            this.getAvatar()
-        },
-
-        getAvatar(){
-            try {
-                const dados = api.get('/userImg/perfil/' + this.user._id).then(res => {
-                    this.fotoPerfil = res.data.key
-                })
-
-            } catch (error) {
-                console.log(error)
-            }
-        },
-        
         async logout(){
             await this.actionSignOut()
 
@@ -121,11 +109,22 @@ export default {
         },
 
         ...mapActions('auth', ['actionSignOut']),
+
+        authUser() {
+            this.user = this.auth.user
+            this.person = this.auth.person
+        },
      },
 
     mounted(){
-        this.getUser()
-    }
+        this.authUser()
+    },
+
+    computed: {
+        ...mapState({
+            auth: state => state.auth
+        }),
+    },
 }
 </script>
 

@@ -6,8 +6,8 @@
             <small class="ml-4">{{ product.user.email }}</small>
 
                 <v-card-text class="my-auto">
-                    <v-img v-if="product.user.foto" height="500" alt="Imagem do produto" 
-                        :src="require(`@/mvpo_back_End/tmp/uploads/files/img/user/${product.user.foto}`)">
+                    <v-img v-if="product.user.img_perfil_url" height="500" alt="Imagem do produto" 
+                        :src="product.user.img_perfil_url">
                     </v-img>
 
                     <v-img v-else :src="imgTeste" contain max-height="250"></v-img>
