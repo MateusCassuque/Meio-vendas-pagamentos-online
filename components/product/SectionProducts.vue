@@ -7,7 +7,7 @@
                             <v-progress-linear color="deep-purple" height="10" indeterminate></v-progress-linear>
                         </template>
                         
-                        <v-img v-if="product.foto" height="250" alt="Imagem do produto" :src="require(`@/mvpo_back_End/tmp/uploads/files/img/product/${product.foto}`)">
+                        <v-img v-if="product.foto" height="250" alt="Imagem do produto" :src="product.foto">
                             <v-card-title id="tituloFoto" class=""> <span class="tituloFoto"> {{ product.name }} </span> </v-card-title>
                         </v-img>
 

@@ -4,13 +4,11 @@
 
         <v-card class="">
             <div id="capaPerfil">
-                <v-img class="capa" alt="foto de capa" v-if="fotoCapa"
-                :src="require(`@/mvpo_back_End/tmp/uploads/files/img/user/${fotoCapa}`)"></v-img>
+                <v-img class="capa" alt="foto de capa" v-if="fotoCapa" :src="fotoCapa"></v-img>
 
                 <v-img v-else alt="foto de capa" :src="fotoModelo" class="capa">  </v-img>
                 
-                <img v-if="fotoPerfil" :src="require(`@/mvpo_back_End/tmp/uploads/files/img/user/${fotoPerfil}`)" 
-                alt="Foto de Perfil" id="perfil">
+                <img v-if="fotoPerfil" :src="fotoPerfil" alt="Foto de Perfil" id="perfil">
             </div>
             
             <v-card-title class="centro"> {{ user.userNome }}</v-card-title>
@@ -91,7 +89,7 @@ export default {
             products.forEach(product => {
                 try {
                     api.get('/image/' + product.images[0]).then( res => {
-                        product.foto = res.data.key
+                        product.foto = res.data.url
                     })
                 } catch (error) {
                     
@@ -102,11 +100,11 @@ export default {
          authImages(id){
             try {
                 const perfil = api.get('/userImg/perfil/' + id).then(res => {
-                    this.fotoPerfil = res.data.key
+                    this.fotoPerfil = res.data.url
                 })
-
+ 
                 const capa = api.get('/userImg/capa/' + id).then(res => {
-                    this.fotoCapa = res.data.key
+                    this.fotoCapa = res.data.url
                 })
 
             } catch (error) {

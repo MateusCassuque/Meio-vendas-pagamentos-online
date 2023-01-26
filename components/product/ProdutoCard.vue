@@ -3,7 +3,7 @@
         <v-card id="produto">
 
             <v-img v-if="product.foto" height="500" alt="Imagem do produto"
-                :src="require(`@/mvpo_back_End/tmp/uploads/files/img/product/${product.foto}`)">
+                :src="product.foto">
             </v-img>
 
             <v-img v-else height="300" alt="Imagem do produto" :src="imgTeste"></v-img>

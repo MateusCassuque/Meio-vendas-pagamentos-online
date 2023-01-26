@@ -82,7 +82,7 @@ export default {
             products.forEach(product => {
                 try {
                     api.get('/image/' + product.images[0]).then( res => {
-                        product.foto = res.data.key
+                        product.foto = res.data.url
                     })
                 } catch (error) {
                     

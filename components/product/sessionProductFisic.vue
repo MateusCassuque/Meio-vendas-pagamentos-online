@@ -4,7 +4,7 @@
                 <v-row class="mx-auto">
                     <v-card class="col-md-4 my-4 mx-auto" max-width="350" v-for="product in produtos" :key="product._id">
 
-                        <v-img v-if="product.foto" cover height="250" alt="Imagem do produto" :src="require(`@/mvpo_back_End/tmp/uploads/files/img/product/${product.foto}`)">
+                        <v-img v-if="product.foto" cover height="250" alt="Imagem do produto" :src="product.foto">
                             <v-card-title id="tituloFoto"> <span class="tituloFoto"> {{ product.name }} </span> </v-card-title>
                         </v-img>
 
