@@ -29,9 +29,6 @@
 </template>
 
 <script>
-import imgTeste from '@/static/img/icones/mvpo3.png'
-import imgTeste1 from '@/static/img/icones/mao-pret-branco.png'
-
 import Digitalproducts from '@/components/product/SectionProducts.vue'
 import Fisicalproducts from '@/components/product/sessionProductFisic.vue'
 import { api } from '@/store/services.js'
@@ -47,8 +44,6 @@ export default {
 
     data() {
         return {
-            imgTeste,
-            imgTeste1,
             products:{
                 fisico:[],
                 digital:[],
@@ -80,13 +75,7 @@ export default {
     methods:{
         getImages(products){
             products.forEach(product => {
-                try {
-                    api.get('/image/' + product.images[0]).then( res => {
-                        product.foto = res.data.url
-                    })
-                } catch (error) {
-                    
-                }
+                product.foto = product.images_url[0]
             })
         },
     }
